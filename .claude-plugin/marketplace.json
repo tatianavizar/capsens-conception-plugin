@@ -1,0 +1,16 @@
+{
+  "name": "capsens",
+  "owner": {
+    "name": "Tatiana Villamizar",
+    "email": "tatianavizar@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "capsens-conception",
+      "source": {
+        "source": "github",
+        "repo": "tatianavizar/capsens-conception-plugin"
+      }
+    }
+  ]
+}

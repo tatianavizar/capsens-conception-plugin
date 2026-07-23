@@ -1,13 +1,23 @@
 # Capsens × Claude — Kit Mission de Conception
 
-Plugin Claude Code pour mener des missions de conception produit avec Claude comme co-PM.
+Plugin Cowork pour mener des missions de conception produit avec Claude comme co-PM.
 
-## Installation
+## Installation (Cowork)
 
-```
-/plugin marketplace add tatianavizar/capsens-conception-plugin
-/plugin install capsens-conception
-```
+### Option A — via le repo (recommandé, mises à jour automatiques)
+
+1. Dans Cowork, ouvrez **Customize** (barre latérale) → **Plugins**
+2. Cliquez **Add marketplace**
+3. Collez l'URL : `https://github.com/tatianavizar/capsens-conception-plugin`
+4. Le plugin **capsens-conception** apparaît → cliquez **Install**
+
+### Option B — via fichier
+
+1. **Customize** → **Plugins** → **Upload plugin**
+2. Sélectionnez le fichier `.plugin`
+3. **Install**
+
+Vérifiez ensuite les skills activés dans **Customize → Plugins → capsens-conception**.
 
 ## Skills
 

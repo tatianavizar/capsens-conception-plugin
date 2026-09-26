@@ -1,7 +1,7 @@
 {
   "name": "capsens-conception",
-  "version": "1.1.0",
-  "description": "Kit complet pour mener des missions de conception produit avec Claude comme co-PM. Couvre l'initialisation de mission, la gestion des sessions, les workshops, les briefs fonctionnels et les audits de cohérence.",
+  "version": "1.2.0",
+  "description": "Kit complet pour mener des missions de conception produit avec Claude comme co-PM. Couvre l'initialisation de mission, la gestion des sessions, les workshops, le brief projet, les briefs fonctionnels (PRD), les audits de cohérence et le vocabulaire métier par verticale.",
   "author": {
     "name": "Capsens",
     "email": "tatiana@capsens.eu"

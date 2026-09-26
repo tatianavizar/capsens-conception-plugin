@@ -26,11 +26,12 @@ dis-le simplement et ne force pas une mise à jour vide.
 ## Étape 2 — Mettre à jour la mémoire projet
 
 Dans `00_Reference/[PROJET]_Memoire.md` :
-- Ajoute chaque décision prise aujourd'hui au format `### Dn — [Titre] (JJ/MM/AAAA, session)`
+- Ajoute chaque décision prise aujourd'hui au format `### Dn — [Titre] (JJ/MM/AAAA, Sn)`
   avec Décision / Raison / Conséquence / Ce qui reste, en continuant la numérotation existante
-- Dans "Points ouverts", **barre** ce qui vient d'être tranché, sans le supprimer :
-  `~~Qn — …~~ → tranché le JJ/MM/AAAA (Dn)`
-- Ajoute les nouvelles questions à la suite (`Qn` suivant)
+- Dans le tableau "Points ouverts", ce qui vient d'être tranché garde sa ligne : libellé barré
+  et statut `✅ Tranché (Dn)` — ne jamais supprimer la ligne
+- Vérifie que toutes les `Qn` créées pendant la session (briefs, CR…) sont bien dans la
+  mémoire ; ajoute celles qui manquent
 - N'ajoute que ce qui a été réellement décidé — pas les hypothèses encore en discussion
 
 ## Étape 3 — Mettre à jour la synthèse
@@ -41,8 +42,11 @@ le scope couvert ou la prochaine étape a changé.
 ## Étape 4 — Mettre à jour l'index des sessions
 
 Dans `SESSIONS_INDEX.md` :
-- Ajoute une ligne pour cette conversation (sujet, ce qui a été produit, fichier(s)),
-  incrémente le total et ajoute l'entrée `[Sn — JJ/MM/AAAA] → …` à la chronologie
+- Ajoute une ligne `Sn` pour cette conversation dans le tableau "Sessions" (date, thème, ce
+  qui a été produit, fichier(s)), incrémente le total et ajoute l'entrée
+  `[Sn — JJ/MM/AAAA] → …` à la chronologie
+- Si `workshop-debrief` a déjà ajouté la ligne de cette session, complète-la au lieu d'en
+  créer une deuxième
 - Si un sujet reste inachevé, ajoute-le dans la section "À reprendre" ;
   retire de cette section ce qui a été terminé aujourd'hui
 
@@ -51,11 +55,15 @@ Dans `SESSIONS_INDEX.md` :
 Dans `INDEX.md` :
 - Ajoute les nouveaux fichiers créés pendant la session
 - Mets à jour le statut des fichiers modifiés (🔴 Draft / 🟡 En validation / 🟢 Validé)
+- Si un audit de cohérence a été produit, ajoute-le dans 00_Reference/
 - Si un fichier a été remplacé, déplace l'ancien dans `_Archive/` et note la raison
   d'archivage dans la section Archive — on ne supprime jamais un fichier
 
 Si des briefs ont changé de statut ou si des blockers ont été levés, mets à jour
 `01_Briefs_Fonctionnels/[PROJET]_Plan_Briefs.md`.
+
+Mets à jour la section "⚠️ Points ouverts avant go-dev" de `INDEX.md` : les `Qn` ouvertes
+qui figurent dans la colonne "Bloqué par" du plan, avec les briefs qu'elles bloquent.
 
 ## Étape 6 — Résumé final
 

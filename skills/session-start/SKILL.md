@@ -16,11 +16,14 @@ Charge le contexte d'une mission en cours pour pouvoir travailler immédiatement
 ## Ce que tu dois faire
 
 1. **Identifie le projet** si ce n'est pas déjà clair dans le message du CDP.
+   Si le dossier de travail est le dossier parent de plusieurs projets, travaille dans le
+   sous-dossier du projet et lis son `CLAUDE.md` explicitement (il n'est pas chargé tout seul).
 
 2. **Lis les fichiers dans cet ordre précis** :
    - `CLAUDE.md` — règles et conventions du projet, verticale
    - `INDEX.md` — pour te repérer dans tous les fichiers du projet
    - `00_Reference/[PROJET]_Synthese.md` — pour comprendre l'état d'avancement actuel
+   - `00_Reference/[PROJET]_Memoire.md` — toutes les décisions (`Dn`) et points ouverts (`Qn`)
    - `SESSIONS_INDEX.md` — pour voir ce que les conversations précédentes ont produit,
      et la section "À reprendre"
    - `01_Briefs_Fonctionnels/[PROJET]_Plan_Briefs.md` s'il existe — l'état des briefs
@@ -31,14 +34,19 @@ Charge le contexte d'une mission en cours pour pouvoir travailler immédiatement
 4. **Si la session porte sur un sujet précis** (ex : "on va travailler sur le brief scoring"),
    lis aussi le fichier pertinent avant de confirmer le chargement.
 
-5. **Confirme en 3 lignes** :
+5. **Fixe le numéro de session** : cette conversation est `S[n+1]`, n étant la dernière
+   session de `SESSIONS_INDEX.md`. Annonce-le ; tous les skills de la conversation l'utilisent.
+
+6. **Confirme en 3 lignes** :
    - Ce que tu as compris de l'état du projet (1 ligne)
    - Ce que les dernières sessions ont produit ou laissé "À reprendre" (1 ligne)
    - Ce sur quoi tu es prêt à travailler aujourd'hui (1 ligne)
 
-6. **Propose les actions disponibles** selon le contexte :
-   - Pas encore de brief projet ni de plan des briefs → proposer `write-project-brief`
-   - Des briefs en 🔴 À rédiger sans blocker → proposer `write-brief`
+7. **Propose les actions disponibles** selon le contexte :
+   - Mémoire vide (kick-off pas encore débriefé) → proposer de préparer ou débriefer le
+     kick-off W0 (`workshop-prep` / `workshop-debrief`)
+   - Mémoire alimentée mais pas de brief projet ni de plan → proposer `write-project-brief`
+   - Des briefs en ⚪ À rédiger sans blocker → proposer `write-brief`
    - Un workshop est prévu prochainement → proposer `workshop-prep`
    - Beaucoup de briefs rédigés récemment → proposer `consistency-check`
    - Sinon → demander sur quoi le CDP veut travailler

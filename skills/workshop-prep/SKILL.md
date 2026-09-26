@@ -18,11 +18,14 @@ Génère une trame opérationnelle pour conduire un workshop client.
 1. **Charge le contexte du projet** si ce n'est pas déjà fait :
    - Lis `00_Reference/[PROJET]_Memoire.md`
    - Lis les CRs des workshops précédents dans `04_Workshops/CR/`
-   - Lis le plan des briefs et les briefs des sujets qui seront abordés
+   - Lis le plan des briefs et les briefs des sujets qui seront abordés, s'ils existent
+   - Pour le kick-off (W0), la mémoire est vide : pars de ce que le CDP sait du client et
+     centre la trame sur la découverte (existant, ambition, utilisateurs, contraintes, statut
+     réglementaire si la verticale en a un)
    - Si la verticale du projet est renseignée, charge le skill `verticale-metier`
 
 2. **Identifie les informations manquantes** pour préparer la trame :
-   - Numéro du workshop (W1, W2, W3… = numéro de workshop, pas de semaine)
+   - Numéro du workshop (W0 = kick-off, puis W1, W2… = numéro de workshop, pas de semaine)
    - Thème ou sujet principal
    - Date et durée prévue
    - Participants côté client (rôles)
@@ -51,6 +54,7 @@ Génère une trame opérationnelle pour conduire un workshop client.
    | # | Point ouvert | Contexte | Options envisagées |
    |---|--------------|----------|--------------------|
    | Qn | | | (a) … (b) … |
+   (en W0, s'il n'existe encore aucune `Qn`, lister les questions de découverte sans numéro)
 
    ## Séquence et timing
    | Bloc | Durée | Sujet | Hypothèses à valider |

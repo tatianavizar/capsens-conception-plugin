@@ -90,8 +90,9 @@ Périmètre : crowdfunding (prêt, obligations, equity), investissement, paiemen
 
 ## Risques types (pré-mortem)
 
-Pour chaque risque retenu : **scénario de casse → probabilité (H/M/B) → impact → comportement
-attendu à écrire dans les cas limites du brief**. Retenir les 3 à 5 plus probables.
+Pour chaque risque : **scénario de casse → probabilité (H/M/B) → impact → comportement attendu**.
+Ne retenir que les risques qui s'appliquent à la feature ; dans le brief, seul le comportement
+attendu va dans les cas limites.
 
 ### Flux d'argent
 - Notification PSP manquée, dupliquée ou hors ordre → état incohérent wallet vs plateforme

@@ -33,11 +33,13 @@ Audite la cohérence de l'ensemble des livrables d'une mission de conception.
 
    ### Vérification 2 — Zones couvertes dans la mémoire mais absentes des briefs
    Cherche les features ou règles actées en workshop (dans la mémoire) qui n'ont
-   pas encore été documentées dans un brief fonctionnel.
+   pas encore été documentées dans un brief fonctionnel. Si le sujet est déjà attribué à un
+   brief ⚪ À rédiger dans le plan, classe-le "Planifié BF-NN" et non comme un manque.
 
    ### Vérification 3 — Dépendances non documentées
    Cherche les cas où un brief utilise des concepts définis dans un autre brief
-   sans le citer dans sa section "Dépendances fonctionnelles".
+   sans le citer dans la colonne "Dépendances" de son §4 (Découpage en features), ou des
+   dépendances circulaires entre briefs dans le plan.
 
    ### Vérification 4 — Questions ouvertes déjà tranchées
    Cherche les questions ouvertes listées dans les briefs qui sont en fait déjà
@@ -55,8 +57,10 @@ Audite la cohérence de l'ensemble des livrables d'une mission de conception.
    ### Vérification 7 — Conventions
    - Chaque `(Dn)` cité dans un brief existe dans la mémoire et n'a pas été abandonné
    - Les `Qn` ont le même numéro et le même libellé dans la mémoire et dans les briefs
-   - Aucun prénom dans les livrables (rôles uniquement)
-   - Statuts conformes : 🔴 Draft / 🟡 En validation / 🟢 Validé
+   - Aucun prénom dans les livrables (rôles uniquement), hors champs Méta CDP / Devs prévus
+     si le CDP a donné les prénoms
+   - Statuts conformes : 🔴 Draft / 🟡 En validation / 🟢 Validé (⚪ À rédiger dans le plan)
+   - Toutes les `Qn` des briefs figurent dans la mémoire, avec la même catégorie
 
 3. **Présente les résultats** sous forme de tableau :
 
@@ -109,6 +113,7 @@ Audite la cohérence de l'ensemble des livrables d'une mission de conception.
 
 4. **Sauvegarde le rapport** dans `00_Reference/[PROJET]_Audit_Coherence_[AAAA-MM-DD].md`
    (si un audit du même jour existe, suffixe `_v2` ; les audits précédents partent dans `_Archive/`)
+   puis ajoute-le dans `INDEX.md`
 
 5. **Propose** de corriger les problèmes identifiés, en commençant par les plus critiques.
    Ne corrige pas automatiquement — attends la validation du CDP pour chaque correction.

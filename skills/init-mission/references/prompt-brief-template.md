@@ -38,7 +38,8 @@ Ce que le brief NE DOIT PAS contenir :
 - Un sujet que le plan des briefs attribue à un autre brief → le citer en dépendance
 
 RÈGLES DE FORME
-- Rôles uniquement (ex : analyste, admin, investisseur), jamais de prénoms — nulle part
+- Rôles uniquement (ex : analyste, admin, investisseur), jamais de prénoms — seule exception :
+  les champs Méta CDP et Devs prévus, si le CDP a donné les prénoms
 - Un brief = un PRD, numéroté BF-NN dans le plan des briefs
 - Dépendances : citer par numéro et nom ("BF-06 Vue Analyste", "BF-02 / 003"),
   jamais par chemin

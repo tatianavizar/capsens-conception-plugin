@@ -42,10 +42,10 @@ Structure exacte à produire :
 ```markdown
 # CR Workshop W[N] — [Thème principal]
 
-**Date** : [JJ/MM/AAAA]
+**Date** : [JJ/MM/AAAA — date du workshop, pas date de rédaction ; si inconnue, la demander]
 **Participants** : [rôles]
 **Durée** : [durée effective]
-**CDP** : [nom du CDP]
+**CDP** : [prénom si le CDP l'a donné, sinon "CDP Capsens"]
 **Source** : [Notes CDP / Transcription tl;dv / Les deux]
 **Périmètre du CR** : [ce qui est volontairement exclu, ou "Complet"]
 
@@ -53,11 +53,11 @@ Structure exacte à produire :
 
 | Objectif | Atteint ? | Note |
 |----------|-----------|------|
-| [repris de la trame] | ✅ Oui / ⚠️ Partiel / ❌ Non | |
+| [repris de la trame ; sans trame (ex : W0), demandés au CDP] | ✅ Oui / ⚠️ Partiel / ❌ Non | |
 
 ## Décisions actées
 
-### Dn — [Titre]
+### Dn — [Titre] (JJ/MM/AAAA, W[N])
 - **Décision** : [ce qui est acté]
 - **Raison** : [pourquoi]
 - **Conséquence** : [impact]
@@ -72,9 +72,9 @@ Structure exacte à produire :
 
 ## Points ouverts
 
-| # | Point ouvert | Impact | Décision prévue | Décideur (rôle) | Deadline |
-|---|--------------|--------|----------------|-----------------|---------|
-| Qn | | | | | |
+| # | Point ouvert | Catégorie | Impact | Décideur (rôle) | Échéance |
+|---|--------------|-----------|--------|-----------------|----------|
+| Qn | | Client / Dev / Design | | | [JJ/MM/AAAA, "avant W[N+1]" ou "Non définie"] |
 
 ## Implications produit
 
@@ -83,7 +83,7 @@ Structure exacte à produire :
 
 ## Prochaines étapes
 
-1. [Action] — [Responsable (rôle)] — [JJ/MM/AAAA]
+1. [Action] — [Responsable (rôle)] — [JJ/MM/AAAA, "avant W[N+1]" ou "Non définie"]
 
 > ⚠️ Réserves de fidélité : [ce qui a pu être perdu — transcription partielle, notes
 > reconstituées de mémoire… — ou "Aucune"]. Rien n'a été interprété au-delà de la source.
@@ -94,17 +94,26 @@ Structure exacte à produire :
 1. Ajoute les décisions dans `00_Reference/[PROJET]_Memoire.md` au format
    `### Dn — [Titre] (JJ/MM/AAAA, W[N])`, en continuant la numérotation existante —
    les mêmes numéros que dans le CR
-2. Dans "Points ouverts", **barre** ce qui a été tranché, sans le supprimer :
-   `~~Qn — …~~ → tranché le JJ/MM/AAAA (Dn)`
-3. Ajoute les nouveaux points ouverts (`Qn` suivant)
-4. Si une décision antérieure est annulée, déplace-la dans "Décisions abandonnées" avec la raison
+2. Dans le tableau "Points ouverts", ce qui a été tranché garde sa ligne : libellé barré et
+   statut `✅ Tranché (Dn)`
+3. Ajoute les nouveaux points ouverts (`Qn` suivant) avec les mêmes colonnes que dans le CR.
+   Une `Qn` existante précisée en workshop est reformulée au même endroit, en gardant son numéro
+4. Ajoute à "Hors scope V1" ce qui a été explicitement écarté de la V1
+5. Si une décision antérieure est annulée, déplace-la dans "Décisions abandonnées" avec la raison
+6. **Kick-off (W0)** : remplis aussi "Contexte & vision produit", "Personas & utilisateurs" et
+   "Pipeline / Processus métier" avec ce que le client a présenté (existant, ambition,
+   contraintes). Seul ce qui est explicitement acté devient une `Dn` ; le reste est du contexte
+   ou une `Qn`
 
 ## Étape 5 — Mettre à jour les fichiers
 
-- Sauvegarde le CR dans `04_Workshops/CR/[PROJET]_CR_W[N]_[AAAA-MM-DD].md`
+- Sauvegarde le CR dans `04_Workshops/CR/[PROJET]_CR_W[N]_[AAAA-MM-DD].md` (date du workshop)
 - Mets à jour `00_Reference/[PROJET]_Synthese.md` si l'avancement a changé
-- Mets à jour le plan des briefs si des blockers sont levés ou des briefs à créer
-- Mets à jour `SESSIONS_INDEX.md` et `INDEX.md`
+- Si le plan des briefs existe, mets-le à jour (blockers levés, briefs à créer). S'il n'existe
+  pas encore, liste les implications produit sans numéro BF : c'est `write-project-brief`
+  qui attribue les numéros
+- Mets à jour `INDEX.md`, et dans `SESSIONS_INDEX.md` ajoute ou complète la ligne `Sn` de la
+  session en cours (une seule ligne par session), avec le total et la chronologie
 
 ## Étape 6 — Résumé final
 
@@ -122,4 +131,5 @@ Termine toujours par :
 - Si c'est ambigu dans la transcription, le mettre en "point ouvert" — pas l'interpréter
 - Ne pas barrer des points ouverts existants s'ils n'ont pas été explicitement tranchés
 - Rôles uniquement, jamais de prénoms — y compris pour les participants et responsables
+  (seule exception : le champ CDP, si le CDP a donné son prénom)
 - Ne jamais publier sans validation explicite du CDP

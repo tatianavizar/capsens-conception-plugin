@@ -43,8 +43,9 @@ N'invente pas de règles de domaine.
   présenté comme "à confirmer par le client / son juriste", jamais comme un avis juridique.
   Les seuils et dates évoluent : les citer avec la date du fichier de référence.
 - **Risques types** : à passer en revue en fin de brief (`write-brief`), en préparation de
-  workshop (`workshop-prep`) et en audit (`consistency-check`) — trier les 3 à 5 plus
-  probables pour la feature, pas tout lister.
+  workshop (`workshop-prep`) et en audit (`consistency-check`) — ne retenir que ceux qui
+  s'appliquent vraiment à la feature, aucun si aucun ne s'applique. Dans un brief, seul le
+  comportement attendu va dans le tableau des cas limites (ou "À définir → Qn").
 
 ## Ajouter une verticale
 

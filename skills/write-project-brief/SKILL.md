@@ -44,8 +44,8 @@ Structure exacte :
 | Statut | 🔴 Draft / 🟡 En validation / 🟢 Validé |
 | Date création | [JJ/MM/AAAA] |
 | Mis à jour | [JJ/MM/AAAA] |
-| Source | [Kick-off, W1, W2… — Dn] |
-| CDP | [Nom du CDP] |
+| Source | [W0 (kick-off), W1, W2… — Dn] |
+| CDP | [Prénom si le CDP l'a donné, sinon "CDP Capsens"] |
 | Client | [Client] |
 | Verticale | [Verticale] |
 
@@ -114,10 +114,10 @@ Mis à jour : [JJ/MM/AAAA]
 
 | BF | Nom | Priorité | Statut | Bloqué par | Dépendances | Fichier |
 |----|-----|----------|--------|------------|-------------|---------|
-| BF-01 | [Nom] | P0 | 🔴 À rédiger | — | — | — |
-| BF-02 | [Nom] | P1 | 🔴 À rédiger | Q4 | BF-01 | — |
+| BF-01 | [Nom] | P0 | ⚪ À rédiger | — | — | — |
+| BF-02 | [Nom] | P1 | ⚪ À rédiger | Q4 | BF-01 | — |
 
-Statuts : 🔴 À rédiger / 🟡 En validation / 🟢 Validé / ❌ Abandonné (avec raison)
+Statuts : ⚪ À rédiger / 🔴 Draft / 🟡 En validation / 🟢 Validé / ❌ Abandonné (avec raison)
 
 ## Ordre de rédaction recommandé
 1. **BF-01 [Nom]** — [pourquoi en premier : débloque X, aucun blocker]
@@ -134,8 +134,13 @@ Statuts : 🔴 À rédiger / 🟡 En validation / 🟢 Validé / ❌ Abandonné 
 - **Numérotation** : `BF-01`, `BF-02`… Un numéro attribué ne change jamais, même si le brief
   est abandonné (il passe alors en ❌ avec la raison).
 - **Bloqué par** : les `Qn` de la mémoire qui empêchent de rédiger le brief.
+- **Dépendances** : jamais circulaires. Si deux briefs dépendent l'un de l'autre, trancher dans
+  les frontières lequel porte le sujet commun.
+- **Nouvelles questions** : toute nouvelle `Qn` est ajoutée immédiatement au tableau
+  "Points ouverts" de la mémoire, avec sa catégorie (Client / Dev / Design).
 - **Frontières** : dès que deux briefs pourraient couvrir le même sujet, trancher ici qui le porte.
-- **Rôles uniquement**, jamais de prénoms — y compris dans "en attente de".
+- **Rôles uniquement**, jamais de prénoms — y compris dans "en attente de" (seule exception :
+  le champ Méta CDP, si le CDP a donné son prénom).
 - **Questions** : numérotation `Qn` identique à celle des points ouverts de la mémoire.
   Une question tranchée reste listée, en ✅, avec la décision `Dn` qui la tranche.
 - **Contraintes réglementaires** : si la verticale du projet est renseignée, charge le skill
@@ -144,7 +149,9 @@ Statuts : 🔴 À rédiger / 🟡 En validation / 🟢 Validé / ❌ Abandonné 
 
 ## Étape 5 — Sauvegarder et demander validation
 
-1. Sauvegarde les deux fichiers dans `01_Briefs_Fonctionnels/`
+1. Sauvegarde les deux fichiers dans `01_Briefs_Fonctionnels/`. Statut du brief projet :
+   🔴 Draft pendant la rédaction, 🟡 En validation dès qu'il est présenté au CDP, 🟢 Validé
+   quand le CDP le valide
 2. Mets à jour `INDEX.md`
 3. Présente-les au CDP et demande la validation explicite.
    Ne jamais publier (Slite, Notion, etc.) sans accord explicite.

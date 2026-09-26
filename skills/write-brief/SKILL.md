@@ -19,19 +19,26 @@ le plan des briefs et tous les autres briefs de la mission.
 
 Si le CDP n'a pas précisé de brief :
 
-1. Lis `01_Briefs_Fonctionnels/[PROJET]_Plan_Briefs.md`
-2. Identifie les briefs en 🔴 À rédiger sans blocker ouvert
+1. Lis `01_Briefs_Fonctionnels/[PROJET]_Plan_Briefs.md` et `00_Reference/[PROJET]_Memoire.md`
+2. Identifie les briefs en ⚪ À rédiger sans blocker ouvert
 3. Suis l'"Ordre de rédaction recommandé" du plan
-4. Propose au CDP le brief le plus prioritaire avec une justification courte :
+4. Pour le candidat, fais le test de maturité de l'étape 2 : s'il échoue, passe au suivant et
+   signale au CDP qu'aucun brief mûr n'est disponible si tous échouent :
+   ```
+   ⚠️ Aucun brief n'est mûr. Le plus avancé est BF-[NN] ([N] décisions). Il manque surtout :
+   [sujets]. Je te propose de préparer un workshop dessus (skill `workshop-prep`).
+   ```
+5. Propose au CDP le brief le plus prioritaire avec une justification courte :
    ```
    Le prochain brief à rédiger est **BF-[NN] [NOM]** car :
-   - Statut : 🔴 À rédiger, aucun blocker ouvert
+   - Statut : ⚪ À rédiger, aucun blocker ouvert
+   - Matière : [N] décisions l'alimentent (Dn, Dn…)
    - Il débloque : [briefs dépendants]
    - Priorité : [P0/P1/P2/P3]
 
    Je continue avec celui-là ? Ou tu préfères [alternative] ?
    ```
-5. Attends la confirmation avant de commencer.
+6. Attends la confirmation avant de commencer.
 
 Si le plan n'existe pas encore, propose de le créer d'abord (skill `write-project-brief`).
 Si le CDP veut un brief absent du plan, ajoute-le au plan avec le numéro suivant.
@@ -48,7 +55,16 @@ Si le CDP a précisé un brief → aller directement à l'étape 1.
 
 ## Étape 2 — Vérifier les prérequis
 
-Avant de rédiger, vérifie si des décisions manquantes bloqueraient le brief.
+**Test de maturité** : liste les `Dn` de la mémoire qui alimentent ce brief et, pour chaque
+feature pressentie, ce qui est acté (flux, règles, rôles). Si une feature n'a aucune décision
+qui la porte, ou si la plupart des règles seraient des questions, le brief n'est pas mûr :
+```
+⚠️ BF-[NN] n'est pas mûr : [N] décisions seulement ([Dn…]), la feature [X] n'a aucune
+règle actée. Je te propose plutôt de préparer un workshop sur [sujets] (skill `workshop-prep`).
+On rédige quand même un brouillon ?
+```
+
+Vérifie ensuite si des décisions manquantes bloqueraient le brief.
 Si oui, liste-les clairement :
 ```
 ⚠️ Avant de rédiger ce brief, ces points doivent être tranchés :
@@ -73,8 +89,8 @@ Structure exacte :
 | Statut | 🔴 Draft / 🟡 En validation / 🟢 Validé |
 | Date création | [JJ/MM/AAAA] |
 | Source | [Workshops et décisions d'origine, ex : W3, W4 — D12, D15] |
-| CDP | [Nom du CDP] |
-| Devs prévus | [Noms ou "À définir"] |
+| CDP | [Prénom si le CDP l'a donné, sinon "CDP Capsens"] |
+| Devs prévus | [Prénoms si le CDP les a donnés, sinon "À définir"] |
 | Priorité | P0 / P1 / P2 / P3 |
 | Figma | [Lien ou "À venir — à ajouter après les maquettes"] |
 | Timeline | [Contraintes de calendrier connues] |
@@ -104,7 +120,7 @@ Structure exacte :
 | # | Feature | Priorité | Dépendances | Statut spec |
 |---|---------|----------|-------------|-------------|
 | 001 | [Titre] | P0 | — | 🔴 |
-| 002 | [Titre] | P1 | 001, BF-02 / 003 | 🔴 |
+| 002 | [Titre] | P1 | 001 | 🔴 |
 
 ## 5. Spécifications fonctionnelles
 
@@ -161,6 +177,9 @@ Structure exacte :
 ```
 
 Règles de remplissage :
+- **Dépendances** (§4) : uniquement les prérequis amont (features du brief ou d'un autre brief
+  déjà dans le plan, ex : `BF-01 / 002`), dans le même sens que le plan. Jamais un brief aval,
+  jamais de dépendance circulaire.
 - **Features** : numérotées `001`, `002`… à l'intérieur du brief. Hors du brief, on les cite
   `BF-02 / 003`. Un numéro attribué ne change jamais.
 - **Statut spec** : 🔴 non spécifiée / 🟡 spécifiée, en validation / 🟢 validée.
@@ -168,23 +187,32 @@ Règles de remplissage :
 - **Questions** : numérotation `Qn` identique à celle de la mémoire. Une question tranchée
   reste listée en ✅ avec sa décision. Si aucune : "Aucune question en suspens — décisions
   actées (Dn, Dn)".
-- **Cas limites** : si la verticale est chargée, passe en revue ses risques types et intègre
-  les 3 à 5 plus probables pour chaque feature.
+- **Cas limites** : un comportement attendu qui n'est pas acté s'écrit
+  "À définir → Qn" (et la `Qn` est créée) — jamais inventé.
+- **Risques de la verticale** : si elle est chargée, passe en revue ses risques types et
+  n'intègre que ceux qui s'appliquent vraiment à la feature — aucun si aucun ne s'applique.
+- **Nouvelles questions** : toute nouvelle `Qn` créée par le brief est ajoutée immédiatement
+  au tableau "Points ouverts" de la mémoire, avec la même catégorie (Client / Dev / Design).
 - **Emails transactionnels** propres au brief : les décrire dans la feature concernée, en
   blockquote (Objet / Destinataire (rôle) / Déclencheur / Contenu / CTA).
 
 ## Étape 4 — Sauvegarder et demander validation
 
-1. Sauvegarde dans `01_Briefs_Fonctionnels/[PROJET]_BF-[NN]_[Nom].md`
-2. Mets à jour le plan des briefs : statut (🟡 En validation, puis 🟢 Validé une fois validé
-   par le CDP), colonne Fichier, et "Bloqué par" si de nouvelles questions bloquent d'autres briefs
+1. Sauvegarde dans `01_Briefs_Fonctionnels/[PROJET]_BF-[NN]_[Nom].md` (nom sans accents ni
+   espaces, `_` comme séparateur)
+2. Statut : 🔴 Draft pendant la rédaction ; 🟡 En validation dès que le brief est présenté au
+   CDP ; 🟢 Validé quand le CDP le valide. Un brief rédigé malgré un test de maturité négatif
+   reste 🔴 Draft. Reporte le même statut dans le plan des briefs, avec la colonne Fichier.
+   Dans "Bloqué par", mets les `Qn` ouvertes qui bloquent ce brief lui-même, et celles qui
+   bloquent d'autres briefs
 3. Mets à jour `INDEX.md`
 4. **Présente le fichier au CDP et demande la validation explicite.**
    Ne jamais publier (Slite, Notion, etc.) sans accord explicite.
 
 ## Règles strictes
 
-- **Rôles uniquement** — jamais de prénoms, nulle part, y compris dans les questions en suspens
+- **Rôles uniquement** — jamais de prénoms, y compris dans les questions en suspens
+  (seule exception : les champs Méta CDP et Devs prévus, si le CDP a donné les prénoms)
 - **V1 uniquement** — Phase 2 / futur → ❌ Exclus, avec la raison
 - **Pas de design** — pas de description d'interface, placement, couleurs
 - **Pas de technique** — pas de noms de colonnes, endpoints, modèles de données

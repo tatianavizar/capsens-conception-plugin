@@ -3,7 +3,7 @@ name: session-start
 description: >
   Charge le contexte complet d'une mission Capsens en début de conversation.
   Permet à Claude de reprendre le travail là où on s'est arrêtés sans avoir
-  à tout réexpliquer. Déclencher quand le PM dit : "reprends le projet [nom]",
+  à tout réexpliquer. Déclencher quand le CDP dit : "reprends le projet [nom]",
   "on reprend [projet]", "contexte [projet]", "charge le projet", "où on en est
   sur [projet]", "je veux travailler sur [projet]", "session [projet]",
   ou en début de toute conversation sur une mission en cours.
@@ -15,26 +15,41 @@ Charge le contexte d'une mission en cours pour pouvoir travailler immédiatement
 
 ## Ce que tu dois faire
 
-1. **Identifie le projet** si ce n'est pas déjà clair dans le message du PM.
+1. **Identifie le projet** si ce n'est pas déjà clair dans le message du CDP.
+   Si le dossier de travail est le dossier parent de plusieurs projets, travaille dans le
+   sous-dossier du projet et lis son `CLAUDE.md` explicitement (il n'est pas chargé tout seul).
 
 2. **Lis les fichiers dans cet ordre précis** :
+   - `CLAUDE.md` — règles et conventions du projet, verticale
    - `INDEX.md` — pour te repérer dans tous les fichiers du projet
    - `00_Reference/[PROJET]_Synthese.md` — pour comprendre l'état d'avancement actuel
-   - `SESSIONS_INDEX.md` — pour voir ce que les conversations précédentes ont produit
+   - `00_Reference/[PROJET]_Memoire.md` — toutes les décisions (`Dn`) et points ouverts (`Qn`)
+   - `SESSIONS_INDEX.md` — pour voir ce que les conversations précédentes ont produit,
+     et la section "À reprendre"
+   - `01_Briefs_Fonctionnels/[PROJET]_Plan_Briefs.md` s'il existe — l'état des briefs
 
-3. **Si la session porte sur un sujet précis** (ex : "on va travailler sur le brief scoring"),
+3. **Si la verticale est renseignée** dans `CLAUDE.md` ou la Synthèse, charge le skill
+   `verticale-metier`.
+
+4. **Si la session porte sur un sujet précis** (ex : "on va travailler sur le brief scoring"),
    lis aussi le fichier pertinent avant de confirmer le chargement.
 
-4. **Confirme en 3 lignes** :
+5. **Fixe le numéro de session** : cette conversation est `S[n+1]`, n étant la dernière
+   session de `SESSIONS_INDEX.md`. Annonce-le ; tous les skills de la conversation l'utilisent.
+
+6. **Confirme en 3 lignes** :
    - Ce que tu as compris de l'état du projet (1 ligne)
-   - Ce que les dernières sessions ont produit (1 ligne)
+   - Ce que les dernières sessions ont produit ou laissé "À reprendre" (1 ligne)
    - Ce sur quoi tu es prêt à travailler aujourd'hui (1 ligne)
 
-5. **Propose les actions disponibles** selon le contexte :
-   - Si des briefs sont "À rédiger" → proposer write-brief
-   - Si un workshop est prévu prochainement → proposer workshop-prep
-   - Si beaucoup de briefs ont été rédigés récemment → proposer consistency-check
-   - Sinon → demander sur quoi le PM veut travailler
+7. **Propose les actions disponibles** selon le contexte :
+   - Mémoire vide (kick-off pas encore débriefé) → proposer de préparer ou débriefer le
+     kick-off W0 (`workshop-prep` / `workshop-debrief`)
+   - Mémoire alimentée mais pas de brief projet ni de plan → proposer `write-project-brief`
+   - Des briefs en ⚪ À rédiger sans blocker → proposer `write-brief`
+   - Un workshop est prévu prochainement → proposer `workshop-prep`
+   - Beaucoup de briefs rédigés récemment → proposer `consistency-check`
+   - Sinon → demander sur quoi le CDP veut travailler
 
 ## Ton comportement pendant la session
 
@@ -46,11 +61,5 @@ les personas, le pipeline métier, la stack technique. Tu peux :
 
 ## Fin de session
 
-Si le PM dit "on s'arrête", "fin de session", "à demain", ou équivalent,
-applique automatiquement le Protocole SESSION END :
-
-1. Mets à jour `00_Reference/[PROJET]_Memoire.md` avec les décisions de la session
-2. Mets à jour `00_Reference/[PROJET]_Synthese.md` si l'avancement a changé
-3. Ajoute cette conversation à `SESSIONS_INDEX.md`
-4. Mets à jour `INDEX.md` si de nouveaux fichiers ont été créés
-5. Résume en 5 points ce qui a été acté ou produit aujourd'hui
+Si le CDP dit "on s'arrête", "fin de session", "à demain", ou équivalent,
+applique le skill `session-end`.
